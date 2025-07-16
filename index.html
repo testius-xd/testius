@@ -1,747 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TESTIUS - Xediand Digital</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      /* New Blue Color Palette */
-      --deep-blue: #0A1930; /* Very dark blue for background/accents */
-      --primary-blue: #007bff; /* Bright, vibrant blue */
-      --secondary-blue: #3289fa; /* Lighter shade of primary blue */
-      --accent-blue: #61dafb; /* Cyan/Light blue for highlights */
-      --light-blue-bg: #E3F2FD; /* Very light blue for subtle section backgrounds */
-      --text-dark: #333;
-      --text-light: #f4f4f4;
-      --button-bg: var(--primary-blue);
-      --button-hover-bg: var(--secondary-blue);
-      --card-bg: #ffffff; /* White for cards */
-      --card-shadow: rgba(0, 0, 0, 0.15); /* Consistent card shadow */
-
-      /* Variables for stacked cards */
-      --card-stack-vertical-offset: -80px; /* How much each card is offset vertically */
-      --card-stack-horizontal-offset: 55px; /* How much each card is offset horizontally to the right */
-      --card-stack-rotation-degree: 0deg; /* How much each card is rotated */
-      --card-stack-initial-z-index: 10; /* Base z-index for the top card */
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--light-blue-bg);
-      color: var(--text-dark);
-      line-height: 1.6;
-      overflow-x: hidden; /* Prevent horizontal scroll from animations */
-      position: relative; /* Needed for body::after positioning */
-    }
-
-    /* Page background effect (static, subtle) */
-    body::after {
-        content: '';
-        position: fixed; /* Stays fixed on scroll */
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="80" r="15" fill="%23E0E0E0" opacity="0.1"/><circle cx="80" cy="30" r="25" fill="%23E0E0E0" opacity="0.1"/><circle cx="50" cy="50" r="10" fill="%23E0E0E0" opacity="0.08"/><circle cx="10" cy="40" r="8" fill="%23E0E0E0" opacity="0.05"/><circle cx="90" cy="60" r="12" fill="%23E0E0E0" opacity="0.1"/></svg>');
-        background-size: 300px 300px; /* Make patterns very sparse */
-        opacity: 0.4; /* Overall opacity of the background pattern */
-        z-index: -1; /* Place it behind everything */
-    }
-
-    header {
-      background: linear-gradient(135deg, var(--deep-blue) 0%, var(--primary-blue) 100%);
-      color: var(--text-light);
-      padding: 80px 20px 60px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 350px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    }
-
-    /* Header background animation/effect */
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="80" r="15" fill="%232a3f5a" opacity="0.1"/><circle cx="80" cy="30" r="25" fill="%232a3f5a" opacity="0.15"/><circle cx="50" cy="50" r="10" fill="%232a3f5a" opacity="0.08"/><circle cx="10" cy="40" r="8" fill="%232a3f5a" opacity="0.05"/><circle cx="90" cy="60" r="12" fill="%232a3f5a" opacity="0.12"/></svg>');
-      background-size: 150px 150px;
-      opacity: 0.8;
-      z-index: 0;
-      animation: headerPatternMove 60s linear infinite;
-    }
-
-    @keyframes headerPatternMove {
-      from { background-position: 0 0; }
-      to { background-position: 1500px 1500px; }
-    }
-
-    .header-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      z-index: 1;
-      position: relative;
-    }
-
-    .header-logo {
-      height: 140px;
-      width: 140px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      transition: transform 0.4s ease-in-out;
-      border: 3px solid var(--accent-blue);
-    }
-    .header-logo:hover {
-        transform: scale(1.1) rotate(5deg);
-    }
-    .header-logo img {
-      height: 70%;
-      width: 70%;
-      object-fit: contain;
-    }
-
-    header h1 {
-      font-size: 4em;
-      margin: 0;
-      font-weight: 700;
-      letter-spacing: -2px;
-      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-    }
-    header p.tagline {
-        font-size: 1.5em; /* Slightly smaller than h1 */
-        margin-top: -10px; /* Pull closer to h1 */
-        font-weight: 300; /* Lighter weight for tagline */
-        color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 25px;
-    }
-
-    section {
-      background-color: var(--card-bg);
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      margin-bottom: 40px;
-      animation: fadeIn 0.8s ease-out forwards;
-      opacity: 0;
-      transform: translateY(20px);
-      position: relative;
-      overflow: hidden; /* Ensure background effects stay within bounds */
-    }
-
-    /* Semi-transparent background pattern for sections */
-    .advantage-section::before,
-    .video-section::before,
-    .features-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        /* NEW SUBTLE GREY DIAGONAL LINE PATTERN */
-        background: url('data:image/svg+xml;utf8,<svg width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path d="M-1 1 L11 -1 L11 1 L-1 11Z" fill="%23E0E0E0" opacity="0.2"/></svg>');
-        background-size: 40px 40px; /* Increased size to make the pattern less dense */
-        opacity: 0.7; /* Overall opacity of the pseudo-element, can be adjusted */
-        z-index: 0;
-    }
-    .advantage-section > *, .video-section > *, .features-section > * {
-        position: relative; /* Ensure content is above pseudo-element */
-        z-index: 1;
-    }
-
-
-    section:nth-of-type(1) { animation-delay: 0.1s; }
-    section:nth-of-type(2) { animation-delay: 0.2s; }
-    section:nth-of-type(3) { animation-delay: 0.3s; }
-    section:nth-of-type(4) { animation-delay: 0.4s; }
-    section:nth-of-type(5) { animation-delay: 0.5s; }
-
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    h2 {
-      font-size: 2.5em;
-      color: var(--primary-blue);
-      text-align: center;
-      margin-bottom: 30px;
-      font-weight: 700;
-      position: relative;
-    }
-    h2::after {
-        content: '';
-        display: block;
-        width: 80px;
-        height: 5px;
-        background-color: var(--accent-blue);
-        margin: 15px auto 0;
-        border-radius: 3px;
-    }
-
-    /* "Your Unfair Advantage" Section - More Compact & Fixed */
-    .advantage-section .play-link {
-        flex-direction: row;
-        justify-content: center;
-        margin-bottom: 25px;
-    }
-    .advantage-section .play-link a img {
-        width: 160px;
-    }
-
-    .advantage-section .brief-description {
-        font-size: 1.1em;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-    .advantage-section .brief-description ul {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjusted min-width for better spacing */
-        gap: 15px;
-        margin-top: 1.2em;
-        padding: 0; /* Remove padding to avoid overflow */
-        box-sizing: border-box; /* Include padding in element's total width and height */
-    }
-    .advantage-section .brief-description li {
-        background-color: rgba(227, 242, 253, 0.8); /* Changed to light blue with transparency */
-        border-radius: 10px;
-        padding: 15px 20px;
-        font-weight: 500;
-        color: var(--text-dark); /* Ensure text is dark on transparent white */
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-        text-align: left;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-size: 0.95em;
-        overflow: hidden; /* Ensure text doesn't overflow */
-    }
-    .advantage-section .brief-description li:hover {
-        background-color: var(--secondary-blue);
-        color: white;
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    .advantage-section .brief-description li strong {
-        color: inherit;
-        font-weight: 700;
-    }
-    .advantage-section .brief-description li::before {
-        content: '★';
-        font-size: 1.5em;
-        line-height: 1;
-        color: var(--primary-blue);
-        transition: color 0.3s ease;
-    }
-    .advantage-section .brief-description li:hover::before {
-        color: var(--accent-blue);
-    }
-
-    .toggle-btn {
-      display: block;
-      margin: 0 auto 25px;
-      background-color: var(--button-bg);
-      color: white;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1.05em;
-      font-weight: 600;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .toggle-btn:hover {
-      background-color: var(--button-hover-bg);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    }
-
-    .long-description {
-      display: none;
-      margin-top: 15px;
-      animation: slideDownFadeIn 0.5s ease-out forwards;
-    }
-    .long-description p {
-      margin-bottom: 1em;
-      font-size: 1em;
-      font-weight: 400; /* Ensure normal text is not bold */
-    }
-    .long-description h3 {
-      color: var(--dark-blue);
-      margin-top: 1.5em;
-      margin-bottom: 0.8em;
-      font-size: 1.5em;
-      font-weight: 600;
-      border-bottom: 2px solid var(--primary-blue);
-      padding-bottom: 5px;
-      display: inline-block;
-    }
-    .long-description ul {
-      margin-bottom: 1em;
-      padding-left: 20px;
-    }
-    .long-description ul li {
-        margin-bottom: 0.6em;
-        font-weight: 400; /* Ensure list items are not bold */
-    }
-
-    @keyframes slideDownFadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .video-wrapper {
-      margin: 40px 0;
-      text-align: center;
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-      height: 0;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* Key Features Stacked Cards */
-    .features-stack-container {
-        position: relative;
-        min-height: 550px; /* Base height for the stack, can be adjusted */
-        display: flex;
-        justify-content: center;
-        align-items: flex-start; /* Align to the top of the container */
-        padding-top: 0; /* No explicit top padding */
-        box-sizing: border-box;
-    }
-
-    .feature-card {
-        background-color: var(--card-bg);
-        border-radius: 12px;
-        padding: 25px;
-        box-shadow: 0 6px 15px var(--card-shadow);
-        transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, border-color 0.3s ease, z-index 0s;
-        position: absolute; /* Absolute positioning for stacking */
-        width: 80%; /* Width of the cards */
-        max-width: 600px;
-        border: 2px solid var(--light-blue-bg); /* Light blue border for inactive cards */
-        top: 250px; /* Position at the top of the container for ladder down - Corrected unit */
-        left: 50%;
-        transform: translateX(-50%); /* Center horizontally */
-        cursor: pointer;
-        will-change: transform, box-shadow, z-index;
-        overflow: visible; /* Content always visible */
-    }
-
-    .feature-card.active {
-        border-color: var(--primary-blue); /* Primary blue border for active card */
-        box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-    }
-
-    .feature-card h3 {
-        color: var(--primary-blue);
-        margin-top: 0;
-        font-size: 1.4em;
-        font-weight: 600;
-        margin-bottom: 15px;
-        text-align: left;
-        position: relative;
-        z-index: 2; /* Ensure title is above any pocket content when inactive */
-    }
-
-    .feature-pocket {
-      display: block !important; /* Always show the pocket content */
-      padding-top: 15px;
-      border-top: 1px dashed rgba(0,0,0,0.15);
-      margin-top: 15px;
-    }
-    .feature-pocket p {
-      margin-bottom: 1.2em;
-      font-size: 0.95em;
-    }
-    .feature-pocket img { /* Style for the actual images */
-      width: 100%;
-      height: auto; /* Maintain aspect ratio */
-      display: block;
-      border-radius: 8px;
-      margin-top: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-      header {
-        padding: 60px 20px 40px;
-        min-height: 300px;
-      }
-      header h1 {
-        font-size: 3em;
-      }
-      header p.tagline {
-        font-size: 1.2em;
-      }
-      .header-logo {
-        height: 120px;
-        width: 120px;
-      }
-      .container {
-        padding: 0 15px;
-        margin: 30px auto;
-      }
-      section {
-        padding: 30px;
-        margin-bottom: 30px;
-      }
-      h2 {
-        font-size: 2em;
-      }
-      .advantage-section .brief-description ul {
-          grid-template-columns: 1fr;
-          padding: 0;
-      }
-      .advantage-section .brief-description li {
-        max-width: 100%;
-        font-size: 1em;
-      }
-      .play-link {
-        flex-direction: column;
-        gap: 10px;
-      }
-      .play-link a img {
-        width: 150px;
-      }
-
-      /* Stacked cards on smaller screens revert to accordion */
-      .features-stack-container {
-        height: auto; /* Allow height to adjust */
-        min-height: auto; /* No min-height */
-        padding-top: 0;
-        padding-bottom: 0;
-        align-items: flex-start; /* Reset alignment */
-        flex-direction: column; /* Stack cards vertically */
-      }
-      .feature-card {
-        position: relative; /* Switch to relative positioning for normal flow */
-        left: auto;
-        transform: none;
-        width: 100%; /* Full width */
-        margin-bottom: 20px; /* Space between cards */
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        overflow: visible; /* Always visible for content */
-      }
-       /* On mobile, all cards are initially visible */
-      .feature-card:not(.active) {
-          display: block;
-      }
-      .feature-card .feature-pocket {
-          display: block !important; /* Always show pocket on mobile too */
-      }
-    }
-
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 2.5em;
-      }
-      header p.tagline {
-        font-size: 1em;
-      }
-      .header-logo {
-        height: 120px;
-        width: 120px;
-      }
-      .brief-description {
-        font-size: 0.95em;
-      }
-      .brief-description li {
-        padding: 12px 20px;
-      }
-      .toggle-btn {
-        font-size: 0.9em;
-        padding: 10px 20px;
-      }
-      .long-description h3 {
-        font-size: 1.3em;
-      }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="header-content">
-        <div class="header-logo">
-            <img src="logo.png" alt="TESTIUS Logo" onerror="this.onerror=null; this.src='https://placehold.co/100x100/FFFFFF/333?text=Logo';">
-        </div>
-        <h1>TESTIUS</h1>
-        <p class="tagline">Manage Your Knowledge</p>
-    </div>
-  </header>
-
-  <div class="container">
-    <section class="advantage-section">
-        <h2>Your Unfair Advantage in Knowledge Assessment</h2>
-        <div class="play-link">
-            <span>Available on:</span>
-            <a href="https://play.google.com/store/apps/details?id=com.xediand.testius" target="_blank">
-                <img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play">
-            </a>
-        </div>
-
-        <div class="brief-description">
-            <p>TESTIUS is your unfair advantage in knowledge assessment. Experience:</p>
-            <ul>
-                <li><strong>Lightning-fast test creation:</strong> Turn any text into a test in seconds.</li>
-                <li><strong>AI-powered question generation:</strong> Focus on core concepts, no filler.</li>
-                <li><strong>Precision-crafted answer variants:</strong> Ensures true knowledge assessment.</li>
-                <li><strong>Effortless group & test management:</strong> Streamline team collaboration.</li>
-                <li><strong>Insightful progress statistics:</strong> Track and boost learning effectively.</li>
-            </ul>
-        </div>
-
-        <button class="toggle-btn" id="toggleDescriptionButton" onclick="toggleDescription()">Show More</button>
-        <div class="long-description" id="longDesc">
-            <p>Transform any text into effective tests instantly with TESTIUS!</p>
-
-            <p>Simply use your camera to capture text from documents, notes, or books, or select images from your gallery. TESTIUS intelligently extracts the text and generates questions, providing one correct answer and several plausible incorrect ones.</p>
-
-            <h3>TESTIUS is perfect for:</h3>
-            <ul>
-                <li><strong>Companies:</strong> Easily create tests to assess employee understanding of Standard Operating Procedures (SOPs), training materials, and company policies.</li>
-                <li><strong>Educators & Tutors:</strong> Quickly generate quizzes for students, check homework comprehension, or create materials for private lessons.</li>
-                <li><strong>Parents:</strong> Help your children prepare for exams or check their understanding of schoolwork.</li>
-                <li><strong>Individuals:</strong> Create self-assessment tests from your study notes to effectively prepare for any exam.</li>
-            </ul>
-
-            <h3>Customizable Tests:</h3>
-            <ul>
-                <li>Define the total number of questions.</li>
-                <li>Set mandatory questions and a pool of random questions.</li>
-                <li>Implement a timer to restrict completion time.</li>
-                <li>Set a clear pass threshold.</li>
-            </ul>
-            <p>TESTIUS makes knowledge assessment simple, fast, and adaptable to your needs. Streamline how you test and learn!</p>
-        </div>
-    </section>
-
-    <section class="video-section">
-        <h2>See TESTIUS in Action</h2>
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/A0x7KHnxu-g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </section>
-
-    <section class="features-section">
-        <h2 id="key-features-section">Key Features</h2>
-        <div class="features-stack-container">
-            <div class="feature-card" data-card-id="f1" data-original-order="0">
-                <h3>Smart & Instant Test Creation</h3>
-                <div class="feature-pocket" id="f1">
-                    <p>Convert text from images (camera or gallery) into tests in seconds. Our advanced AI intelligently extracts the most important concepts and generates precise questions, crafting tailored answer variants to eliminate obvious filler options and ensure a serious knowledge assessment.</p>
-                    <img src="/img/test01.png" alt="Testius Feature 1" onerror="this.onerror=null; this.src='https://placehold.co/200x355/E3F2FD/333?text=Image+1';">
-                </div>
-            </div>
-
-            <div class="feature-card" data-card-id="f2" data-original-order="1">
-                <h3>Group Management</h3>
-                <div class="feature-pocket" id="f2">
-                    <p>Create your own party, group, or organization. Invite users and manage them efficiently.</p>
-                    <img src="/img/test02.png" alt="Testius Feature 2" onerror="this.onerror=null; this.src='https://placehold.co/200x355/E3F2FD/333?text=Image+2';">
-                </div>
-            </div>
-
-            <div class="feature-card" data-card-id="f3" data-original-order="2">
-                <h3>Setting up Configuration</h3>
-                <div class="feature-pocket" id="f3">
-                    <p>Separate tests by groups and define user access levels, ensuring the right content reaches the right people.</p>
-                    <img src="/img/test03.png" alt="Testius Feature 3" onerror="this.onerror=null; this.src='https://placehold.co/200x355/E3F2FD/333?text=Image+3';">
-                </div>
-            </div>
-
-            <div class="feature-card" data-card-id="f4" data-original-order="3">
-                <h3>Performance Statistics</h3>
-                <div class="feature-pocket" id="f4">
-                    <p>Gain valuable insights into progress and knowledge gaps with comprehensive statistics for individuals and groups, allowing for targeted improvement and informed decision-making.</p>
-                    <img src="/img/test04.png" alt="Testius Feature 4" onerror="this.onerror=null; this.src='https://placehold.co/200x355/E3F2FD/333?text=Image+4';">
-                </div>
-            </div>
-        </div>
-    </section>
-  </div>
-
-  <script>
-    function toggleDescription() {
-      const desc = document.getElementById('longDesc');
-      const button = document.getElementById('toggleDescriptionButton');
-      if (desc.style.display === 'block') {
-        desc.style.display = 'none';
-        button.textContent = 'Show More';
-      } else {
-        desc.style.display = 'block';
-        button.textContent = 'Show Less';
-      }
-    }
-
-    // --- Key Features Stacked Card Logic ---
-    const featureCardsContainer = document.querySelector('.features-stack-container');
-    let featureCards = Array.from(document.querySelectorAll('.features-stack-container .feature-card')); // Will be reordered dynamically
-    const CARD_VERTICAL_OFFSET = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--card-stack-vertical-offset'));
-    const CARD_HORIZONTAL_OFFSET = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--card-stack-horizontal-offset'));
-    const CARD_ROTATION_DEG = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--card-stack-rotation-degree'));
-    const BASE_Z_INDEX = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--card-stack-initial-z-index'));
-
-    function updateCardPositions() {
-      featureCards.forEach((card, index) => {
-        const verticalShift = index * CARD_VERTICAL_OFFSET;
-        const horizontalShift = index * CARD_HORIZONTAL_OFFSET;
-        const rotation = index * CARD_ROTATION_DEG;
-
-        card.style.transform = `translateX(-50%) translateY(${verticalShift}px) translateX(${horizontalShift}px) rotate(${rotation}deg)`;
-        card.style.zIndex = BASE_Z_INDEX - index;
-
-        const pocket = card.querySelector('.feature-pocket');
-        if (pocket) {
-            pocket.style.display = 'block';
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xediand Digital - Delivering Digital Solutions for Process Efficiency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom styles for the gradient text */
+        .bg-clip-text {
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
+        /* Hide scrollbar but allow scrolling */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-white font-sans">
+    <header class="relative bg-white shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4 md:py-6">
+                <!-- Company Logo and Name -->
+                <div class="flex items-center space-x-2 md:space-x-3">
+<img src="img/xd.png" alt="Xediand Digital Logo Icon" class="h-12 sm:h-16 w-auto">
+<img src="img/xdname.png" alt="Xediand Digital Name" class="h-8 sm:h-10 w-auto">
+                </div>
 
-        // Only for the active/top card, ensure images are loaded before setting container height
-        if (index === 0) {
-            const imagesInActiveCard = Array.from(card.querySelectorAll('img'));
-            const imageLoadPromises = imagesInActiveCard.map(img => new Promise(resolve => {
-                // If image is already complete or has a natural height, resolve immediately
-                if (img.complete && img.naturalHeight !== 0) {
-                    resolve();
-                } else {
-                    // Otherwise, wait for load or error (to prevent endless waiting)
-                    img.onload = () => resolve();
-                    img.onerror = () => resolve();
-                }
-            }));
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Home</a>
+                    <a href="#products" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Products</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">About</a>
+                    <a href="#contact" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">Contact</a>
+                </nav>
 
-            // Wait for all images in the active card to load before calculating height
-            Promise.all(imageLoadPromises).then(() => {
-                requestAnimationFrame(() => {
-                    const activeCardHeight = card.offsetHeight;
-                    const requiredMinHeight = 250 + activeCardHeight + 50; // 250px is the fixed 'top' offset, + buffer
-                    featureCardsContainer.style.minHeight = `${requiredMinHeight}px`;
+                <!-- Mobile Menu Button -->
+                <button 
+                    id="mobile-menu-button"
+                    class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                >
+                    <i data-lucide="menu" id="menu-icon"></i>
+                    <i data-lucide="x" id="x-icon" class="hidden"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-navigation" class="md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-100 shadow-lg z-50 hidden">
+                <nav class="px-4 py-4 space-y-3">
+                    <a href="#home" class="block py-2 text-gray-700 hover:text-blue-600 transition-colors font-medium">Home</a>
+                    <a href="#products" class="block py-2 text-gray-700 hover:text-blue-600 transition-colors font-medium">Products</a>
+                    <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-600 transition-colors font-medium">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-teal-50"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+            <div class="text-center max-w-4xl mx-auto">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-8 leading-relaxed">
+                    Delivering digital solutions 
+                    <span class="block bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text py-3">
+                         for process efficiency
+                    </span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-10 leading-relaxed">
+                    We pioneer innovative mobile applications born from our own concepts, designed to make any process flow easier, faster, and more efficient.<br>
+                    Driven by our own vision, we design and develop cutting-edge mobile applications that transform complex processes into seamless, efficient digital solutions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 md:py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+                    Our Mobile Apps
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Discover our flagship mobile applications designed to enhance productivity and deliver exceptional user experiences across all platforms.
+                </p>
+            </div>
+
+            <div class="relative flex items-center justify-center">
+                <!-- Scroll Left Button (positioned outside) -->
+                <button id="scroll-left" class="absolute left-0 xl:left-[-4rem] top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors hidden md:block z-10">
+                    <i data-lucide="chevron-left" size="24"></i>
+                </button>
+
+                <!-- Product Cards Container -->
+                <div id="product-cards-container" class="flex overflow-x-scroll snap-x snap-mandatory gap-8 pb-4 no-scrollbar w-full">
+                    <!-- Testius Product Card -->
+                    <a href="products/testius.html" class="flex-none w-full lg:w-1/2 snap-start">
+                        <div class="group bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 cursor-pointer h-full flex flex-col">
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl overflow-hidden">
+                                    <img src="img/testius512.png" alt="Testius App Icon" class="w-full h-full object-cover">
+                                </div>
+                                <i data-lucide="chevron-right" class="text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" size="24"></i>
+                            </div>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">TESTIUS</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed flex-grow">
+                                Elevate your testing experience with TESTIUS, the ultimate AI-driven tool for transforming any text into highly effective assessments. Benefit from intelligent text extraction from images, automatic generation of the most important questions, and the creation of incredibly realistic wrong answer variants. Plus, gain full control with a comprehensive suite of test moderation tools for both individual and group settings, all backed by detailed performance statistics.
+                            </p>
+
+                            <div class="mb-6 mt-auto">
+                                <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                    <span class="flex items-center space-x-1">
+                                        <i data-lucide="star" size="16" class="text-yellow-400 fill-current"></i>
+                                        <span>In development</span>
+                                    </span>
+                                    <span>•</span>
+                                    <span>Releases in June 2025</span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Productivity</span>
+                                <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-sm font-medium">Team Collaboration</span>
+                                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">AI Powered</span>
+                                <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Analytics</span>
+                            </div>
+
+                            <div class="flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
+                                <span>Learn More</span>
+                                <i data-lucide="arrow-right" size="16" class="ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Aura Eye Shield Product Card -->
+                    <a href="https://play.google.com/store/apps/details?id=com.xg.auraeyeshield" target="_blank" class="flex-none w-full lg:w-1/2 snap-start">
+                        <div class="group bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 cursor-pointer h-full flex flex-col">
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl overflow-hidden">
+                                    <img src="img/eye512.png" alt="Aura EyeShield App Icon" class="w-full h-full object-cover">
+                                </div>
+                                <i data-lucide="chevron-right" class="text-gray-400 group-hover:text-teal-600 group-hover:translate-x-1 transition-all" size="24"></i>
+                            </div>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Aura Eye Shield</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed flex-grow">
+                                Tired of blue light fatigue? Aura Eye Shield provides an easy, intuitive solution to make your phone use healthier and more comfortable. This app features gentle color temperature adjustments, smart intensity control for optimal viewing across different apps, and an ultra-simple, one-screen interface. It seamlessly integrates with your phone's brightness controls, respects your privacy with no unnecessary permissions, and helps reduce eye strain for better sleep.
+                            </p>
+
+                            <div class="mb-6 mt-auto">
+                                <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                    <span class="flex items-center space-x-1">
+                                        <i data-lucide="star" size="16" class="text-yellow-400 fill-current"></i>
+                                        <span>5.0 Rating</span>
+                                    </span>
+                                    <span>•</span>
+                                    <span>Launched in May 2025</span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-sm font-medium">Health & Fitness</span>
+                                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Wellness</span>
+                            </div>
+
+                            <div class="flex items-center text-teal-600 font-semibold group-hover:text-teal-700 transition-colors">
+                                <span>Learn More</span>
+                                <i data-lucide="arrow-right" size="16" class="ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <!-- Scroll Right Button (positioned outside) -->
+                <button id="scroll-right" class="absolute right-0 xl:right-[-4rem] top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors hidden md:block z-10">
+                    <i data-lucide="chevron-right" size="24"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <!-- Adjusted padding-bottom for the h2 to ensure text below doesn't block it -->
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-8 pb-2"> 
+                        Why Choose
+                        <span class="block bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text py-3">
+                            Xediand Digital?
+                        </span>
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        We combine innovative technology with user-centered design to create mobile applications that make a real impact. Our team is passionate about delivering solutions that exceed expectations and drive meaningful results.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mt-1">
+                                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">User-Centric Design</h4>
+                                <p class="text-gray-600">Every app is crafted with the end-user in mind, ensuring intuitive and delightful experiences.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center mt-1">
+                                <div class="w-2 h-2 bg-teal-600 rounded-full"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Cutting-Edge Technology</h4>
+                                <p class="text-gray-600">We leverage the latest technologies and frameworks to build robust, scalable applications.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center mt-1">
+                                <div class="w-2 h-2 bg-orange-600 rounded-full"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Ongoing Support</h4>
+                                <p class="text-gray-600">Our commitment doesn't end at launch. We provide continuous support and updates.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Company Image Placeholder replaced with actual image and made square -->
+                <div class="relative flex items-center justify-center w-full aspect-square md:aspect-square">
+                    <img src="img/xedianddigital.png" alt="Xediand Digital Company Image" class="w-full h-full object-cover rounded-3xl shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <!-- Footer Logo and Name (similar to header for consistency) -->
+                    <div class="flex items-center space-x-2 md:space-x-3 mb-6">
+                        <img src="img/xd.png" alt="Xediand Digital Logo Icon" class="h-10 w-auto">
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        Transforming ideas into exceptional mobile experiences. We're passionate about creating digital solutions that make a difference.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Products</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="products/testius.html" class="hover:text-white transition-colors">TESTIUS</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Aura Eye Shield</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Xediand Digital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Initialize Lucide icons on page load
+        lucide.createIcons();
+
+        // Product card scroll functionality
+        const productCardsContainer = document.getElementById('product-cards-container');
+        const scrollLeftButton = document.getElementById('scroll-left');
+        const scrollRightButton = document.getElementById('scroll-right');
+
+        if (productCardsContainer && scrollLeftButton && scrollRightButton) {
+            scrollLeftButton.addEventListener('click', () => {
+                // Scroll by a fixed amount or the width of one card
+                productCardsContainer.scrollBy({
+                    left: -productCardsContainer.offsetWidth / 2, // Scroll half the container width
+                    behavior: 'smooth'
                 });
             });
-        }
-      });
-    }
 
-    function setActiveCard(clickedCardElement) {
-      const clickedOriginalOrder = parseInt(clickedCardElement.dataset.originalOrder);
-
-      const cardsBeforeClicked = featureCards
-        .filter(card => parseInt(card.dataset.originalOrder) < clickedOriginalOrder)
-        .sort((a, b) => parseInt(a.dataset.originalOrder) - parseInt(b.dataset.originalOrder));
-
-      const cardsAfterClicked = featureCards
-        .filter(card => parseInt(card.dataset.originalOrder) > clickedOriginalOrder)
-        .sort((a, b) => parseInt(a.dataset.originalOrder) - parseInt(b.dataset.originalOrder));
-
-      const newOrderArray = [clickedCardElement, ...cardsAfterClicked, ...cardsBeforeClicked];
-
-      featureCards = newOrderArray;
-
-      featureCards.forEach(card => card.classList.remove('active'));
-      clickedCardElement.classList.add('active');
-
-      updateCardPositions();
-    }
-
-    // Initialize cards on page load
-    document.addEventListener('DOMContentLoaded', () => {
-      featureCards.forEach(card => {
-        card.addEventListener('click', () => setActiveCard(card));
-      });
-
-      if (featureCards.length > 0) {
-        featureCards.find(card => parseInt(card.dataset.originalOrder) === 0).classList.add('active');
-      }
-
-      updateCardPositions();
-
-      // Fade-in sections on load
-      const sections = document.querySelectorAll('section');
-      sections.forEach((section, index) => {
-          section.style.animationDelay = `${index * 0.1}s`;
-          section.style.transform = 'translateY(20px)';
-      });
-    });
-
-    // Handle responsiveness: stacked cards convert to accordion on smaller screens
-    window.addEventListener('resize', () => {
-        if (window.innerWidth <= 768) {
-            featureCards.forEach(card => {
-                card.style.transform = '';
-                card.style.zIndex = '';
-                card.style.opacity = '';
-                card.style.position = 'relative';
-                card.style.width = '100%';
-                card.style.top = '';
-                card.style.left = '';
-                card.classList.remove('active');
-                document.getElementById(card.dataset.cardId).style.display = 'block';
+            scrollRightButton.addEventListener('click', () => {
+                // Scroll by a fixed amount or the width of one card
+                productCardsContainer.scrollBy({
+                    left: productCardsContainer.offsetWidth / 2, // Scroll half the container width
+                    behavior: 'smooth'
+                });
             });
-            const firstLogicalCard = featureCards.find(card => parseInt(card.dataset.originalOrder) === 0);
-            if (firstLogicalCard) {
-                firstLogicalCard.classList.add('active');
-            }
-            featureCardsContainer.style.minHeight = 'auto';
-            featureCardsContainer.style.paddingTop = '0';
-            featureCardsContainer.style.paddingBottom = '0';
-            featureCardsContainer.style.alignItems = 'flex-start';
 
-        } else {
-            featureCards.forEach(card => {
-                card.style.position = 'absolute';
-                card.style.width = '80%';
-                card.style.top = '250px'; /* Restored original top value for stacked view */
-                card.style.left = '42%';
+            // Optional: Show/hide scroll buttons based on scroll position
+            productCardsContainer.addEventListener('scroll', () => {
+                // Check if scrollable content is available to hide/show buttons
+                const isScrollable = productCardsContainer.scrollWidth > productCardsContainer.clientWidth;
+                if (!isScrollable) {
+                    scrollLeftButton.classList.add('hidden');
+                    scrollRightButton.classList.add('hidden');
+                } else {
+                    // Adjust visibility of buttons based on scroll position
+                    if (productCardsContainer.scrollLeft === 0) {
+                        scrollLeftButton.classList.add('hidden');
+                    } else {
+                        scrollLeftButton.classList.remove('hidden');
+                    }
+
+                    if (productCardsContainer.scrollLeft + productCardsContainer.clientWidth >= productCardsContainer.scrollWidth - 5) { // -5 for tolerance
+                        scrollRightButton.classList.add('hidden');
+                    } else {
+                        scrollRightButton.classList.remove('hidden');
+                    }
+                }
             });
-            updateCardPositions();
+
+            // Initial check on load
+            const checkScrollButtonsVisibility = () => {
+                const isScrollable = productCardsContainer.scrollWidth > productCardsContainer.clientWidth;
+                if (!isScrollable) {
+                    scrollLeftButton.classList.add('hidden');
+                    scrollRightButton.classList.add('hidden');
+                } else {
+                    scrollLeftButton.classList.remove('hidden'); // Ensure visible if scrollable
+                    scrollRightButton.classList.remove('hidden');
+                    
+                    if (productCardsContainer.scrollLeft === 0) {
+                        scrollLeftButton.classList.add('hidden');
+                    }
+                    if (productCardsContainer.scrollLeft + productCardsContainer.clientWidth >= productCardsContainer.scrollWidth - 5) {
+                        scrollRightButton.classList.add('hidden');
+                    }
+                }
+            };
+            checkScrollButtonsVisibility(); // Call on initial load
+            window.addEventListener('resize', checkScrollButtonsVisibility); // Recalculate on resize
         }
-    });
-  </script>
+    </script>
 </body>
 </html>
