@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xediand Digital - Delivering Digital Solutions for Process Efficiency</title>
+    <title>TESTIUS - Xediand Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -13,36 +13,34 @@
             background-clip: text;
             color: transparent;
         }
-        /* Hide scrollbar but allow scrolling */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+
+        /* Keyframe for header background pattern movement */
+        @keyframes headerPatternMove {
+            from { background-position: 0 0; }
+            to { background-position: 1500px 1500px; }
         }
     </style>
 </head>
-<body class="min-h-screen bg-white font-sans">
+<body class="min-h-screen bg-gray-50 font-sans text-gray-800">
+
     <header class="relative bg-white shadow-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4 md:py-6">
-                <!-- Company Logo and Name -->
                 <div class="flex items-center space-x-2 md:space-x-3">
-<img src="img/xd.png" alt="Xediand Digital Logo Icon" class="h-12 sm:h-16 w-auto">
-<img src="img/xdname.png" alt="Xediand Digital Name" class="h-8 sm:h-10 w-auto">
+                    <a href="../index.html" class="flex items-center space-x-2 group">
+                        <img src="../img/xd.png" alt="Xediand Digital Logo Icon" class="h-12 sm:h-16 w-auto">
+                        <img src="../img/xdname.png" alt="Xediand Digital Name" class="h-8 sm:h-10 w-auto">
+                    </a>
                 </div>
 
-                <!-- Desktop Navigation -->
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Home</a>
-                    <a href="#products" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Products</a>
-                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">About</a>
-                    <a href="#contact" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">Contact</a>
+                    <a href="../index.html#products" class="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-2">
+                        <i data-lucide="arrow-left" size="20"></i>
+                        <span>Back to Products</span>
+                    </a>
                 </nav>
 
-                <!-- Mobile Menu Button -->
-                <button 
+                <button
                     id="mobile-menu-button"
                     class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
                 >
@@ -51,305 +49,242 @@
                 </button>
             </div>
 
-            <!-- Mobile Navigation Menu -->
             <div id="mobile-navigation" class="md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-100 shadow-lg z-50 hidden">
                 <nav class="px-4 py-4 space-y-3">
-                    <a href="#home" class="block py-2 text-gray-700 hover:text-blue-600 transition-colors font-medium">Home</a>
-                    <a href="#products" class="block py-2 text-gray-700 hover:text-blue-600 transition-colors font-medium">Products</a>
-                    <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-600 transition-colors font-medium">Contact</a>
+                    <a href="../index.html#products" class="block py-2 text-gray-700 hover:text-blue-600 transition-colors font-medium">Back to Products</a>
                 </nav>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-teal-50"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-            <div class="text-center max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-8 leading-relaxed">
-                    Delivering digital solutions 
-                    <span class="block bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text py-3">
-                         for process efficiency
-                    </span>
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-600 mb-10 leading-relaxed">
-                    We pioneer innovative mobile applications born from our own concepts, designed to make any process flow easier, faster, and more efficient.<br>
-                    Driven by our own vision, we design and develop cutting-edge mobile applications that transform complex processes into seamless, efficient digital solutions.
-                </p>
-            </div>
-        </div>
-    </section>
+<section class="relative overflow-hidden bg-gradient-to-br from-blue-800 to-blue-500 text-white py-6 md:py-10 shadow-lg">
+    <div class="absolute inset-0 opacity-10" style='background: url("data:image/svg+xml;utf8,<svg viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'><circle cx=\'20\' cy=\'80\' r=\'15\' fill=\'%23FFFFFF\' opacity=\'0.1\'/><circle cx=\'80\' cy=\'30\' r=\'25\' fill=\'%23FFFFFF\' opacity=\'0.15\'/><circle cx=\'50\' cy=\'50\' r=\'10\' fill=\'%23FFFFFF\' opacity=\'0.08\'/><circle cx=\'10\' cy=\'40\' r=\'8\' fill=\'%23FFFFFF\' opacity=\'0.05\'/><circle cx=\'90\' cy=\'60\' r=\'12\' fill=\'%23FFFFFF\' opacity=\'0.12\'/></svg>)</div>
 
-    <!-- Products Section -->
-    <section id="products" class="py-20 md:py-32 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
-                    Our Mobile Apps
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+        <img src="../img/whitetestius.png" alt="TESTIUS Logo" class="mb-4 w-72 h-72 md:w-[320px] md:h-[320px] object-contain transform transition-transform duration-500 hover:scale-105">
+        <p class="text-xl md:text-3xl text-blue-100 max-w-3xl">Your Unfair Advantage in Knowledge Assessment</p>
+    </div>
+</section>
+
+    <main>
+        <section class="py-16 md:py-24 bg-white shadow-lg rounded-2xl mx-4 lg:mx-auto max-w-7xl mt-8 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10" style="background: url('data:image/svg+xml;utf8,<svg width=\'10\' height=\'10\' viewBox=\'0 0 10 10\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M-1 1 L11 -1 L11 1 L-1 11Z\' fill=\'%23E0E0E0\' opacity=\'0.2\'/></svg>'); background-size: 40px 40px;"></div> 
+            <div class="relative z-10 px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
+                    Why TESTIUS is Your Edge
                 </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Discover our flagship mobile applications designed to enhance productivity and deliver exceptional user experiences across all platforms.
-                </p>
-            </div>
-
-            <div class="relative flex items-center justify-center">
-                <!-- Scroll Left Button (positioned outside) -->
-                <button id="scroll-left" class="absolute left-0 xl:left-[-4rem] top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors hidden md:block z-10">
-                    <i data-lucide="chevron-left" size="24"></i>
-                </button>
-
-                <!-- Product Cards Container -->
-                <div id="product-cards-container" class="flex overflow-x-scroll snap-x snap-mandatory gap-8 pb-4 no-scrollbar w-full">
-                    <!-- Testius Product Card -->
-                    <a href="products/testius.html" class="flex-none w-full lg:w-1/2 snap-start">
-                        <div class="group bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 cursor-pointer h-full flex flex-col">
-                            <div class="flex items-center justify-between mb-6">
-                                <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl overflow-hidden">
-                                    <img src="img/testius512.png" alt="Testius App Icon" class="w-full h-full object-cover">
-                                </div>
-                                <i data-lucide="chevron-right" class="text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" size="24"></i>
-                            </div>
-                            
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4">TESTIUS</h3>
-                            <p class="text-gray-600 mb-6 leading-relaxed flex-grow">
-                                Elevate your testing experience with TESTIUS, the ultimate AI-driven tool for transforming any text into highly effective assessments. Benefit from intelligent text extraction from images, automatic generation of the most important questions, and the creation of incredibly realistic wrong answer variants. Plus, gain full control with a comprehensive suite of test moderation tools for both individual and group settings, all backed by detailed performance statistics.
-                            </p>
-
-                            <div class="mb-6 mt-auto">
-                                <div class="flex items-center space-x-4 text-sm text-gray-500">
-                                    <span class="flex items-center space-x-1">
-                                        <i data-lucide="star" size="16" class="text-yellow-400 fill-current"></i>
-                                        <span>In development</span>
-                                    </span>
-                                    <span>•</span>
-                                    <span>Releases in June 2025</span>
-                                </div>
-                            </div>
-
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Productivity</span>
-                                <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-sm font-medium">Team Collaboration</span>
-                                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">AI Powered</span>
-                                <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Analytics</span>
-                            </div>
-
-                            <div class="flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
-                                <span>Learn More</span>
-                                <i data-lucide="arrow-right" size="16" class="ml-2 group-hover:translate-x-1 transition-transform"></i>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- Aura Eye Shield Product Card -->
-                    <a href="https://play.google.com/store/apps/details?id=com.xg.auraeyeshield" target="_blank" class="flex-none w-full lg:w-1/2 snap-start">
-                        <div class="group bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 cursor-pointer h-full flex flex-col">
-                            <div class="flex items-center justify-between mb-6">
-                                <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl overflow-hidden">
-                                    <img src="img/eye512.png" alt="Aura EyeShield App Icon" class="w-full h-full object-cover">
-                                </div>
-                                <i data-lucide="chevron-right" class="text-gray-400 group-hover:text-teal-600 group-hover:translate-x-1 transition-all" size="24"></i>
-                            </div>
-                            
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Aura Eye Shield</h3>
-                            <p class="text-gray-600 mb-6 leading-relaxed flex-grow">
-                                Tired of blue light fatigue? Aura Eye Shield provides an easy, intuitive solution to make your phone use healthier and more comfortable. This app features gentle color temperature adjustments, smart intensity control for optimal viewing across different apps, and an ultra-simple, one-screen interface. It seamlessly integrates with your phone's brightness controls, respects your privacy with no unnecessary permissions, and helps reduce eye strain for better sleep.
-                            </p>
-
-                            <div class="mb-6 mt-auto">
-                                <div class="flex items-center space-x-4 text-sm text-gray-500">
-                                    <span class="flex items-center space-x-1">
-                                        <i data-lucide="star" size="16" class="text-yellow-400 fill-current"></i>
-                                        <span>5.0 Rating</span>
-                                    </span>
-                                    <span>•</span>
-                                    <span>Launched in May 2025</span>
-                                </div>
-                            </div>
-
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-sm font-medium">Health & Fitness</span>
-                                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Wellness</span>
-                            </div>
-
-                            <div class="flex items-center text-teal-600 font-semibold group-hover:text-teal-700 transition-colors">
-                                <span>Learn More</span>
-                                <i data-lucide="arrow-right" size="16" class="ml-2 group-hover:translate-x-1 transition-transform"></i>
-                            </div>
-                        </div>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-10">
+                    <span class="text-gray-600 font-semibold text-lg">Available on:</span>
+                    <a href="https://play.google.com/store/apps/details?id=com.xg.testcreator" target="_blank" class="transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" class="h-12">
                     </a>
                 </div>
 
+                <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+                    <li class="bg-blue-50 border border-blue-200 rounded-xl p-6 flex items-start space-x-4 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                        <i data-lucide="zap" class="text-blue-600 w-8 h-8 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <strong class="block text-xl font-semibold text-gray-900 mb-2">Lightning-fast test creation</strong>
+                            <p class="text-gray-700 text-base">Turn any text into a test in seconds.</p>
+                        </div>
+                    </li>
+                    <li class="bg-blue-50 border border-blue-200 rounded-xl p-6 flex items-start space-x-4 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                        <i data-lucide="brain" class="text-blue-600 w-8 h-8 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <strong class="block text-xl font-semibold text-gray-900 mb-2">AI-powered question generation</strong>
+                            <p class="text-gray-700 text-base">Focus on core concepts, no filler.</p>
+                        </div>
+                    </li>
+                    <li class="bg-blue-50 border border-blue-200 rounded-xl p-6 flex items-start space-x-4 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                        <i data-lucide="flask-conical" class="text-blue-600 w-8 h-8 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <strong class="block text-xl font-semibold text-gray-900 mb-2">Precision-crafted answer variants</strong>
+                            <p class="text-gray-700 text-base">Ensures true knowledge assessment.</p>
+                        </div>
+                    </li>
+                    <li class="bg-blue-50 border border-blue-200 rounded-xl p-6 flex items-start space-x-4 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                        <i data-lucide="sliders" class="text-blue-600 w-8 h-8 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <strong class="block text-xl font-semibold text-gray-900 mb-2">Flexible Test configuration</strong>
+                            <p class="text-gray-700 text-base">High customization level of tests.</p>
+                        </div>
+                    </li>
+                    <li class="bg-blue-50 border border-blue-200 rounded-xl p-6 flex items-start space-x-4 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                        <i data-lucide="users" class="text-blue-600 w-8 h-8 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <strong class="block text-xl font-semibold text-gray-900 mb-2">Effortless group & test management</strong>
+                            <p class="text-gray-700 text-base">Streamline team collaboration.</p>
+                        </div>
+                    </li>
+                    <li class="bg-blue-50 border border-blue-200 rounded-xl p-6 flex items-start space-x-4 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                        <i data-lucide="bar-chart-2" class="text-blue-600 w-8 h-8 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <strong class="block text-xl font-semibold text-gray-900 mb-2">Insightful progress statistics</strong>
+                            <p class="text-gray-700 text-base">Track and boost learning effectively.</p>
+                        </div>
+                    </li>
+                </ul>
 
-                <!-- Scroll Right Button (positioned outside) -->
-                <button id="scroll-right" class="absolute right-0 xl:right-[-4rem] top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors hidden md:block z-10">
-                    <i data-lucide="chevron-right" size="24"></i>
-                </button>
+                <button class="block mx-auto mt-12 px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105" id="toggleDescriptionButton" onclick="toggleDescription()">Show More</button>
+
+                <div class="long-description mt-12 text-gray-700 leading-relaxed" id="longDesc" style="display: none;">
+                    <p class="mb-6 text-lg">Transform any text into effective tests instantly with TESTIUS!</p>
+                    <p class="mb-8 text-lg">Simply use your camera to capture text from documents, notes, or books, or select images from your gallery. TESTIUS intelligently extracts the text and generates questions, providing one correct answer and several plausible incorrect ones.</p>
+
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-blue-500 inline-block">TESTIUS is perfect for:</h3>
+                    <ul class="list-disc list-inside space-y-3 mt-4 mb-8 text-lg">
+                        <li><strong>Companies:</strong> Easily create tests to assess employee understanding of Standard Operating Procedures (SOPs), training materials, and company policies.</li>
+                        <li><strong>Educators & Tutors:</strong> Quickly generate quizzes for students, check homework comprehension, or create materials for private lessons.</li>
+                        <li><strong>Parents:</strong> Help your children prepare for exams or check their understanding of schoolwork.</li>
+                        <li><strong>Individuals:</strong> Create self-assessment tests from your study notes to effectively prepare for any exam.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-blue-500 inline-block">Customizable Tests:</h3>
+                    <ul class="list-disc list-inside space-y-3 mt-4 mb-8 text-lg">
+                        <li>Define the total number of questions.</li>
+                        <li>Set mandatory questions and a pool of random questions.</li>
+                        <li>Implement a timer to restrict completion time.</li>
+                        <li>Set a clear pass threshold.</li>
+                    </ul>
+                    <p class="text-lg">TESTIUS makes knowledge assessment simple, fast, and adaptable to your needs. Streamline how you test and learn!</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 md:py-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <!-- Adjusted padding-bottom for the h2 to ensure text below doesn't block it -->
-                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-8 pb-2"> 
-                        Why Choose
-                        <span class="block bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text py-3">
-                            Xediand Digital?
-                        </span>
-                    </h2>
-                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-                        We combine innovative technology with user-centered design to create mobile applications that make a real impact. Our team is passionate about delivering solutions that exceed expectations and drive meaningful results.
-                    </p>
-                    <div class="space-y-4">
-                        <div class="flex items-start space-x-4">
-                            <div class="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mt-1">
-                                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-900 mb-1">User-Centric Design</h4>
-                                <p class="text-gray-600">Every app is crafted with the end-user in mind, ensuring intuitive and delightful experiences.</p>
-                            </div>
+        <section class="py-16 md:py-24 bg-gradient-to-br from-gray-100 to-gray-200 shadow-lg rounded-2xl mx-4 lg:mx-auto max-w-7xl mt-8 relative overflow-hidden">
+             <div class="absolute inset-0 opacity-5" style="background: url(&quot;data:image/svg+xml;utf8,<svg width='10' height='10' viewBox='0 0 10 10' xmlns='http://www.w3.org/2000/svg'><path d='M-1 1 L11 -1 L11 1 L-1 11Z' fill='%23B0B0B0' opacity='0.2'/></svg>&quot;); background-size: 40px 40px;"></div>
+            <div class="relative z-10 px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">See TESTIUS in Action</h2>
+                <div class="video-wrapper relative w-full h-0 pb-[56.25%] rounded-xl overflow-hidden shadow-2xl border-4 border-blue-500 transition-all duration-500 hover:scale-[1.01]">
+                    <iframe src="https://www.youtube.com/embed/A0x7KHnxu-g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-white shadow-lg rounded-2xl mx-4 lg:mx-auto max-w-7xl mt-8 relative overflow-hidden">
+             <div class="absolute inset-0 opacity-10" style="background: url(&quot;data:image/svg+xml;utf8,<svg width='10' height='10' viewBox='0 0 10 10' xmlns='http://www.w3.org/2000/svg'><path d='M-1 1 L11 -1 L11 1 L-1 11Z' fill='%23E0E0E0' opacity='0.2'/></svg>&quot;); background-size: 40px 40px;"></div>
+            <div class="relative z-10 px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Key Features</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="flex flex-col lg:flex-row items-center bg-blue-50 rounded-xl p-6 shadow-md border border-blue-200 transition-all duration-300 hover:shadow-xl hover:bg-blue-100">
+                        <img src="../img/test01.png" alt="Testius Feature 1" onerror="this.onerror=null; this.src='https://placehold.co/200x355/E3F2FD/333?text=Image+1';" class="w-full lg:w-2/5 rounded-lg mb-6 lg:mb-0 lg:mr-6 shadow-lg">
+                        <div class="text-center lg:text-left">
+                            <h3 class="text-2xl font-bold text-blue-800 mb-3">Smart & Instant Test Creation</h3>
+                            <p class="text-gray-700 text-lg">Quickly generate tests from any text source with intelligent question and answer variant creation. Streamline your assessment process and save valuable time.</p>
                         </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="flex-shrink-0 w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center mt-1">
-                                <div class="w-2 h-2 bg-teal-600 rounded-full"></div>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-900 mb-1">Cutting-Edge Technology</h4>
-                                <p class="text-gray-600">We leverage the latest technologies and frameworks to build robust, scalable applications.</p>
-                            </div>
+                    </div>
+                    <div class="flex flex-col lg:flex-row items-center bg-blue-50 rounded-xl p-6 shadow-md border border-blue-200 transition-all duration-300 hover:shadow-xl hover:bg-blue-100">
+                        <img src="../img/test02.png" alt="Testius Feature 2" onerror="this.onerror=null; this.src='https://placehold.co/200x355/E3F2FD/333?text=Image+2';" class="w-full lg:w-2/5 rounded-lg mb-6 lg:mb-0 lg:mr-6 shadow-lg">
+                        <div class="text-center lg:text-left">
+                            <h3 class="text-2xl font-bold text-blue-800 mb-3">Seamless Group Management</h3>
+                            <p class="text-700 text-lg">Organize users into groups, assign tests, and monitor progress with ease. Perfect for companies, educators, and study groups.</p>
                         </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="flex-shrink-0 w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center mt-1">
-                                <div class="w-2 h-2 bg-orange-600 rounded-full"></div>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-900 mb-1">Ongoing Support</h4>
-                                <p class="text-gray-600">Our commitment doesn't end at launch. We provide continuous support and updates.</p>
-                            </div>
+                    </div>
+                    <div class="flex flex-col lg:flex-row items-center bg-blue-50 rounded-xl p-6 shadow-md border border-blue-200 transition-all duration-300 hover:shadow-xl hover:bg-blue-100">
+                        <img src="../img/test03.png" alt="Testius Feature 3" onerror="this.onerror=null; this.src='https://placehold.co/200x355/E3F2FD/333?text=Image+3';" class="w-full lg:w-2/5 rounded-lg mb-6 lg:mb-0 lg:mr-6 shadow-lg">
+                        <div class="text-center lg:text-left">
+                            <h3 class="text-2xl font-bold text-blue-800 mb-3">Flexible Test Configuration</h3>
+                            <p class="text-gray-700 text-lg">Customize tests with options for question count, mandatory questions, timers, and pass thresholds to fit your specific needs.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col lg:flex-row items-center bg-blue-50 rounded-xl p-6 shadow-md border border-blue-200 transition-all duration-300 hover:shadow-xl hover:bg-blue-100">
+                        <img src="../img/test04.png" alt="Testius Feature 4" onerror="this.onerror=null; this.src='https://placehold.co/200x355/E3F2FD/333?text=Image+4';" class="w-full lg:w-2/5 rounded-lg mb-6 lg:mb-0 lg:mr-6 shadow-lg">
+                        <div class="text-center lg:text-left">
+                            <h3 class="text-2xl font-bold text-blue-800 mb-3">Detailed Performance Statistics</h3>
+                            <p class="text-gray-700 text-lg">Gain insights into user performance with comprehensive statistics, helping to identify strengths and areas for improvement.</p>
                         </div>
                     </div>
                 </div>
-                <!-- Company Image Placeholder replaced with actual image and made square -->
-                <div class="relative flex items-center justify-center w-full aspect-square md:aspect-square">
-                    <img src="img/xedianddigital.png" alt="Xediand Digital Company Image" class="w-full h-full object-cover rounded-3xl shadow-lg">
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer Section -->
-    <footer class="bg-gray-900 text-white py-16">
+        <section class="py-16 md:py-24 bg-gradient-to-r from-blue-600 to-indigo-700 text-white text-center rounded-2xl mx-4 lg:mx-auto max-w-7xl mt-8 shadow-xl">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-8 leading-tight">
+                Ready to Transform Your Testing?
+            </h2>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto opacity-90">
+                Experience the power of AI-driven assessment. Download TESTIUS today and streamline your knowledge evaluation.
+            </p>
+            <a href="https://play.google.com/store/apps/details?id=com.xg.testcreator" target="_blank" class="inline-block bg-white text-blue-700 px-10 py-4 rounded-full text-xl font-bold shadow-lg hover:bg-blue-100 transform hover:scale-105 transition-all duration-300">
+                Get TESTIUS Now
+            </a>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-16 mt-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="col-span-1 md:col-span-2">
-                    <!-- Footer Logo and Name (similar to header for consistency) -->
                     <div class="flex items-center space-x-2 md:space-x-3 mb-6">
-                        <img src="img/xd.png" alt="Xediand Digital Logo Icon" class="h-10 w-auto">
+                        <img src="../img/xd.png" alt="Xediand Digital Logo Icon" class="h-10 w-auto">
                     </div>
                     <p class="text-gray-400 mb-6 max-w-md">
                         Transforming ideas into exceptional mobile experiences. We're passionate about creating digital solutions that make a difference.
                     </p>
                 </div>
-                
+
                 <div>
                     <h4 class="font-semibold mb-4">Products</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="products/testius.html" class="hover:text-white transition-colors">TESTIUS</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Aura Eye Shield</a></li>
+                        <li><a href="testius.html" class="hover:text-white transition-colors">TESTIUS</a></li>
+                        <li><a href="https://play.google.com/store/apps/details?id=com.xg.auraeyeshield" target="_blank" class="hover:text-white transition-colors">Aura Eye Shield</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="font-semibold mb-4">Company</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="../index.html#about" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../index.html#contact" class="hover:text-white transition-colors">Contact</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Support</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 Xediand Digital. All rights reserved.</p>
+                <p>© 2025 Xediand Digital. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="main.js"></script>
     <script>
         // Initialize Lucide icons on page load
         lucide.createIcons();
 
-        // Product card scroll functionality
-        const productCardsContainer = document.getElementById('product-cards-container');
-        const scrollLeftButton = document.getElementById('scroll-left');
-        const scrollRightButton = document.getElementById('scroll-right');
+        // Mobile menu toggle functionality (copied from index.html)
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileNavigation = document.getElementById('mobile-navigation');
+        const menuIcon = document.getElementById('menu-icon');
+        const xIcon = document.getElementById('x-icon');
 
-        if (productCardsContainer && scrollLeftButton && scrollRightButton) {
-            scrollLeftButton.addEventListener('click', () => {
-                // Scroll by a fixed amount or the width of one card
-                productCardsContainer.scrollBy({
-                    left: -productCardsContainer.offsetWidth / 2, // Scroll half the container width
-                    behavior: 'smooth'
+        if (mobileMenuButton && mobileNavigation && menuIcon && xIcon) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileNavigation.classList.toggle('hidden');
+                menuIcon.classList.toggle('hidden');
+                xIcon.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked
+            mobileNavigation.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNavigation.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    xIcon.classList.add('hidden');
                 });
             });
+        }
 
-            scrollRightButton.addEventListener('click', () => {
-                // Scroll by a fixed amount or the width of one card
-                productCardsContainer.scrollBy({
-                    left: productCardsContainer.offsetWidth / 2, // Scroll half the container width
-                    behavior: 'smooth'
-                });
-            });
-
-            // Optional: Show/hide scroll buttons based on scroll position
-            productCardsContainer.addEventListener('scroll', () => {
-                // Check if scrollable content is available to hide/show buttons
-                const isScrollable = productCardsContainer.scrollWidth > productCardsContainer.clientWidth;
-                if (!isScrollable) {
-                    scrollLeftButton.classList.add('hidden');
-                    scrollRightButton.classList.add('hidden');
-                } else {
-                    // Adjust visibility of buttons based on scroll position
-                    if (productCardsContainer.scrollLeft === 0) {
-                        scrollLeftButton.classList.add('hidden');
-                    } else {
-                        scrollLeftButton.classList.remove('hidden');
-                    }
-
-                    if (productCardsContainer.scrollLeft + productCardsContainer.clientWidth >= productCardsContainer.scrollWidth - 5) { // -5 for tolerance
-                        scrollRightButton.classList.add('hidden');
-                    } else {
-                        scrollRightButton.classList.remove('hidden');
-                    }
-                }
-            });
-
-            // Initial check on load
-            const checkScrollButtonsVisibility = () => {
-                const isScrollable = productCardsContainer.scrollWidth > productCardsContainer.clientWidth;
-                if (!isScrollable) {
-                    scrollLeftButton.classList.add('hidden');
-                    scrollRightButton.classList.add('hidden');
-                } else {
-                    scrollLeftButton.classList.remove('hidden'); // Ensure visible if scrollable
-                    scrollRightButton.classList.remove('hidden');
-                    
-                    if (productCardsContainer.scrollLeft === 0) {
-                        scrollLeftButton.classList.add('hidden');
-                    }
-                    if (productCardsContainer.scrollLeft + productCardsContainer.clientWidth >= productCardsContainer.scrollWidth - 5) {
-                        scrollRightButton.classList.add('hidden');
-                    }
-                }
-            };
-            checkScrollButtonsVisibility(); // Call on initial load
-            window.addEventListener('resize', checkScrollButtonsVisibility); // Recalculate on resize
+        // Toggle description functionality (retained from original testius.html)
+        function toggleDescription() {
+            const desc = document.getElementById('longDesc');
+            const button = document.getElementById('toggleDescriptionButton');
+            if (desc.style.display === 'block') {
+                desc.style.display = 'none';
+                button.textContent = 'Show More';
+            } else {
+                desc.style.display = 'block';
+                button.textContent = 'Show Less';
+            }
         }
     </script>
 </body>
